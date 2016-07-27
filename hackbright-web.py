@@ -22,8 +22,28 @@ def get_student_form():
 
     return render_template("student_search.html")
 
+@app.route("/new_student_form.html")
+def new_student_form():
+
+    return render_template("new_student_form.html")
+
+@app.route("/student-add", methods=['POST'])
+def student_add():
+
+    first = request.form['first']
+    last = request.form['last']
+    github = request.form['github']
+
+    #we need to link to the actual database and put content in here.
+    
+    return render_template("new_student_form.html",
+                            first=first,
+                            last=last,
+                            github=github,
+                            )
+
 
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int("5000"))
