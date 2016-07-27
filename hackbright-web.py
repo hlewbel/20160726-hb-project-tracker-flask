@@ -9,7 +9,9 @@ app = Flask(__name__)
 def get_student():
     """Show information about a student."""
 
+    
     github = request.args.get('github', 'jhacks')
+
     first, last, github = hackbright.get_student_by_github(github)
     return render_template('student_info.html',
                             first=first,
@@ -30,15 +32,17 @@ def new_student_form():
 @app.route("/student-add", methods=['POST'])
 def student_add():
 
-    first = request.form['first']
-    last = request.form['last']
+    first_name = request.form['first']
+    last_name = request.form['last']
     github = request.form['github']
+
+    hackbright.make_new_student(first_name, last_name, github)
 
     #we need to link to the actual database and put content in here.
     
-    return render_template("new_student_form.html",
-                            first=first,
-                            last=last,
+    return render_template("confirmation.html",
+                            first_name=first_name,
+                            last_name=last_name,
                             github=github,
                             )
 

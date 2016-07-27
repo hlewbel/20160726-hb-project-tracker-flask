@@ -133,6 +133,14 @@ SELECT pg_catalog.setval('projects_id_seq', 1, false);
 COPY students (first_name, last_name, github) FROM stdin;
 Jane	Hacker	jhacks
 Sarah	Developer	sdevelops
+Katia	Wu	katiayx
+katia	hanna	khanna
+katia	hannah2	khanna2
+first	last	github
+first_name	last_name	github
+first_name	last_name	github
+first_name	last_name	github
+Queen	South	Qsouth
 \.
 
 
